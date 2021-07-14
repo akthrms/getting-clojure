@@ -61,3 +61,39 @@
 
 (/ (+ 1984.0 2010.0) 2.0)
 ; => 1997.0
+
+(def first-name "Russ")
+
+(def the-average (/ (+ 20 40.0) 2))
+
+(defn hello-world []
+  (println "Hello, world!"))
+
+(hello-world)
+; Hello, world!
+; => nil
+
+(defn say-welcome [what]
+  (println "Welcome to" what))
+
+(say-welcome "Clojure")
+; Welcome to Clojure
+; => nil
+
+(defn average [a b]
+  (/ (+ a b) 2))
+
+(average 5.0 10.0)
+; => 7.5
+
+(defn chatty-average [a b]
+  (println "chatty-average function called")
+  (println "** first argument:" a)
+  (println "** second argument:" b)
+  (/ (+ a b) 2))
+
+(chatty-average 10 20)
+; chatty-average function called
+; ** first argument: 10
+; ** second argument: 20
+; => 15
