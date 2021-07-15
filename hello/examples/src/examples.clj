@@ -97,3 +97,8 @@
 ; ** first argument: 10
 ; ** second argument: 20
 ; => 15
+
+(def author "Dickens")
+
+(defn author [name]
+  (println "Hey," name "is writing a book!"))
