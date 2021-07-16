@@ -136,3 +136,56 @@
 (if '(:full :list) (println "So is a full list!"))
 ; So is a full list!
 ; => nil
+
+(do
+  (println "This is four expressions.")
+  (println "All grouped together as one")
+  (println "That prints some stuff and then evaluates to 44")
+  44)
+; This is four expressions.
+; All grouped together as one
+; That prints some stuff and then evaluates to 44
+; => 44
+
+(defn shipping-charge [preferred-customer order-amount]
+  (if preferred-customer
+    (do
+      (println "Preferred customer, free shipping!")
+      0.00)
+    (do
+      (println "Regular customer, charge them for shipping.")
+      (* order-amount 0.10))))
+
+(defn shipping-charge [preferred-customer order-amount]
+  (cond
+    preferred-customer 0.0
+    (< order-amount 50.0) 5.0
+    (< order-amount 100.0) 10.0
+    :else (* order-amount 0.10)))
+
+(defn customer-greeting [status]
+  (case status
+    :gold "Welcome, welcome, welcome back!!!"
+    :preferred "Welcome back!"
+    "Welcome to Blotts Books"))
+
+(def book {:title "Emma"})
+
+(defn publish-book [book]
+  (when (not (:title book))
+    (throw
+      (ex-info "A book needs a title" {:book book}))))
+
+(try
+  (publish-book book)
+  (catch ArithmeticException e (println "Math problem."))
+  (catch StackOverflowError e (println "Unable to publish..")))
+
+(and true 1984)
+; => 1984
+
+(and 2001 "Emma")
+; => "Emma"
+
+(and 2001 nil "Emma")
+; => nil
