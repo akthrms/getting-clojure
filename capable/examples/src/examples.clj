@@ -73,3 +73,48 @@
 
 (defmethod book-description :zombie-romance [book]
   (str "The heart warming and consuming new romance by " (:author book)))
+
+; (defn sum-copies
+;   ([books]
+;    (sum-copies books 0))
+;   ([books total]
+;    (if (empty? books)
+;      total
+;      (recur
+;        (rest books)
+;        (+ total (:copies-sold (first books)))))))
+
+; (defn sum-copies [books]
+;   (loop [books books
+;          total 0]
+;     (if (empty? books)
+;       total
+;       (recur
+;         (rest books)
+;         (+ total (:copies-sold (first books)))))))
+
+(defn sum-copies [books] (apply + (map :copies-sold books)))
+
+(defn average
+  "Return the average of a and b."
+  [a b]
+  (/ (+ a b) 2.0))
+
+(defn publish-book [book]
+  {:pre  [(:title book) (:author book)]
+   :post [(boolean? %)]}
+  (print-book book)
+  (ship-book book))
+
+(defn one-two-or-more
+  ([a] (println "One arg:" a))
+  ([a b] (println "Two args:" a b))
+  ([a b & more] (println "More than two:" a b more)))
+
+(defn chatty-multi-average
+  ([a b]
+   (println "chatty-average function called with 2 arguments")
+   (/ (+ a b) 2))
+  ([a b c]
+   (println "chatty-average function called with 3 arguments")
+   (/ (+ a b c) 3)))
