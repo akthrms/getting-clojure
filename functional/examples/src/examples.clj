@@ -70,3 +70,20 @@
   (both-f
     cheap-horror?
     (fn [book] (= (:title book) "Possession"))))
+
+(apply + [1 2 3 4])
+; => 10
+
+(def my-inc (partial + 1))
+
+(def not-adventure? (complement adventure?))
+
+(def cheap-horror? (every-pred cheap? horror?))
+
+(def book {:title "Emma" :copies 1000})
+
+(def new-book (update book :copies inc))
+
+(def by-author {:name "Jane Austen" :book {:title "Emma" :copies 1000}})
+
+(def new-by-author (update-in by-author [:book :copies] inc))
